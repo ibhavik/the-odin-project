@@ -1,18 +1,32 @@
+const buttonsEl = document.querySelector('.buttons');
+const playerScoreEl = document.querySelector('.player-score');
+const computerScoreEl = document.querySelector('.computer-score');
+const resultEl = document.querySelector('.result');
+const finalResultEl = document.querySelector('.final-result');
+
 const choices = ['rock', 'paper', 'scissors'];
 const scores = {
   player: 0,
   computer: 0,
 };
 
-const getComputerChoice = function () {
-  const index = Math.floor(Math.random() * 3);
-  return choices[index];
+const updateScoresUI = function (scores) {
+  playerScoreEl.textContent = scores.player;
+  computerScoreEl.textContent = scores.computer;
+  if (scores.player >= 5 || scores.computer >= 5) {
+    const btns = document.querySelectorAll('button');
+    btns.forEach((btn) => {
+      btn.disabled = true;
+      finalResultEl.textContent = `${
+        scores.player > scores.computer ? 'Player Wins.' : 'Computer Wins.'
+      } Please reload the page to play again`;
+    });
+  }
 };
 
-const getPlayerChoice = function () {
-  const choice = prompt('Enter you choice').toLowerCase();
-  if (choice === 'rock' || choice === 'paper' || choice === 'scissors')
-    return choice;
+const getComputerChoice = function () {
+  const index = Math.floor(Math.random() * choices.length);
+  return choices[index];
 };
 
 const playRound = function (playerSelection, computerSelection) {
@@ -23,31 +37,18 @@ const playRound = function (playerSelection, computerSelection) {
   ) {
     scores.computer++;
     return `Computer Wins! ${computerSelection} beats ${playerSelection}`;
-  } else if (
-    (playerSelection === 'rock' && computerSelection === 'scissors') ||
-    (playerSelection === 'paper' && computerSelection === 'rock') ||
-    (playerSelection === 'scissors' && computerSelection === 'paper  ')
-  ) {
+  } else if (playerSelection === computerSelection) {
+    return `It's a tie!`;
+  } else {
     scores.player++;
     return `Player Wins! ${playerSelection} beats ${computerSelection}`;
   }
-
-  if (
-    (playerSelection === 'rock' && computerSelection === 'rock') ||
-    (playerSelection === 'paper' && computerSelection === 'paper') ||
-    (playerSelection === 'scisssors' && computerSelection === 'scisssors')
-  )
-    return 'No body wins!';
 };
 
-const playGame = function () {
-  for (let i = 0; i < 5; i++) {
-    const playerSelection = getPlayerChoice();
-    const computerSelection = getComputerChoice();
-    playRound(playerSelection, computerSelection);
-  }
-
-  console.log(scores);
-};
-
-playGame();
+buttonsEl.addEventListener('click', function (e) {
+  const playerSelection = e.target.dataset.choice;
+  const computerSelection = getComputerChoice();
+  const result = playRound(playerSelection, computerSelection);
+  resultEl.textContent = result;
+  updateScoresUI(scores);
+});
