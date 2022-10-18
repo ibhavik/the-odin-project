@@ -4,20 +4,33 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="app.js"></script>
+    <title>Etch A Sketch</title>
   </head>
   <body>
-    <div class="buttons">
-      <button data-choice="rock">Rock</button>
-      <button data-choice="paper">Paper</button>
-      <button data-choice="scissor">Scissor</button>
+    <h1>Etch - A - Sketch</h1>
+    <div class="container"></div>
+    <div class="settings">
+      <div>
+        <label for="size">Grid Size : 24</label>
+        <input
+          type="range"
+          name="size"
+          id="size"
+          min="10"
+          max="80"
+          step="1"
+          value="24"
+        />
+      </div>
+      <div>
+        <label for="color">Colour</label>
+        <input type="color" name="color" id="color" value="#eeeeee" />
+      </div>
+      <div>
+        <button>Clear Grid</button>
+      </div>
     </div>
-    <p class="result"></p>
-    <div class="scores">
-      <p>Player Score:<span class="player-score">0</span></p>
-      <p>Computer Score:<span class="computer-score">0</span></p>
-    </div>
-    <p class="final-result"></p>
-    <script src="app.js"></script>
   </body>
 </html>

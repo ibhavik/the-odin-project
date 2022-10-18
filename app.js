@@ -1,54 +1,45 @@
-const buttonsEl = document.querySelector('.buttons');
-const playerScoreEl = document.querySelector('.player-score');
-const computerScoreEl = document.querySelector('.computer-score');
-const resultEl = document.querySelector('.result');
-const finalResultEl = document.querySelector('.final-result');
+'use strict';
 
-const choices = ['rock', 'paper', 'scissors'];
-const scores = {
-  player: 0,
-  computer: 0,
+const containerEl = document.querySelector('.container');
+const gridSizeEl = document.querySelector('#size');
+const colorEl = document.querySelector('#color');
+const clearGridBtn = document.querySelector('button');
+
+const clearGrid = function () {
+  containerEl.innerHTML = '';
 };
 
-const updateScoresUI = function (scores) {
-  playerScoreEl.textContent = scores.player;
-  computerScoreEl.textContent = scores.computer;
-  if (scores.player >= 5 || scores.computer >= 5) {
-    const btns = document.querySelectorAll('button');
-    btns.forEach((btn) => {
-      btn.disabled = true;
-      finalResultEl.textContent = `${
-        scores.player > scores.computer ? 'Player Wins.' : 'Computer Wins.'
-      } Please reload the page to play again`;
+const displayGrid = function (numBoxes = 24) {
+  const widthBox = 480 / numBoxes;
+  let boxGeneratingHTML = '';
+  for (let i = 0; i < numBoxes * numBoxes; i++) {
+    const el = `<div class='box'></div>`;
+    boxGeneratingHTML += el;
+  }
+
+  containerEl.insertAdjacentHTML('afterbegin', boxGeneratingHTML);
+  const boxes = document.querySelectorAll('.box');
+  boxes.forEach((box) => {
+    box.style.width = `${widthBox}px`;
+    box.style.height = `${widthBox}px`;
+    box.addEventListener('mouseover', function (e) {
+      e.target.style.backgroundColor = colorEl.value;
     });
-  }
+  });
 };
 
-const getComputerChoice = function () {
-  const index = Math.floor(Math.random() * choices.length);
-  return choices[index];
-};
+displayGrid();
 
-const playRound = function (playerSelection, computerSelection) {
-  if (
-    (playerSelection === 'rock' && computerSelection === 'paper') ||
-    (playerSelection === 'paper' && computerSelection === 'scissors') ||
-    (playerSelection === 'scissors' && computerSelection === 'rock')
-  ) {
-    scores.computer++;
-    return `Computer Wins! ${computerSelection} beats ${playerSelection}`;
-  } else if (playerSelection === computerSelection) {
-    return `It's a tie!`;
-  } else {
-    scores.player++;
-    return `Player Wins! ${playerSelection} beats ${computerSelection}`;
-  }
-};
+gridSizeEl.addEventListener('input', function () {
+  this.labels[0].textContent = `Grid Size: ${this.value}`;
+});
 
-buttonsEl.addEventListener('click', function (e) {
-  const playerSelection = e.target.dataset.choice;
-  const computerSelection = getComputerChoice();
-  const result = playRound(playerSelection, computerSelection);
-  resultEl.textContent = result;
-  updateScoresUI(scores);
+gridSizeEl.addEventListener('change', function () {
+  clearGrid();
+  displayGrid(this.value);
+});
+
+clearGridBtn.addEventListener('click', function () {
+  clearGrid();
+  displayGrid(gridSizeEl.value);
 });
