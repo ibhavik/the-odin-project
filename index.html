@@ -5,32 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <script defer src="app.js"></script>
-    <title>Etch A Sketch</title>
+    <title>Calculator</title>
   </head>
   <body>
-    <h1>Etch - A - Sketch</h1>
-    <div class="container"></div>
-    <div class="settings">
-      <div>
-        <label for="size">Grid Size : 24</label>
-        <input
-          type="range"
-          name="size"
-          id="size"
-          min="10"
-          max="80"
-          step="1"
-          value="24"
-        />
-      </div>
-      <div>
-        <label for="color">Colour</label>
-        <input type="color" name="color" id="color" value="#eeeeee" />
-      </div>
-      <div>
-        <button>Clear Grid</button>
-      </div>
+    <div class="calculator">
+      <div class="display span-4">0</div>
+      <button class="span-2">CLEAR</button>
+      <button class="span-2">DELETE</button>
+      <button class="digit">7</button>
+      <button class="digit">8</button>
+      <button class="digit">9</button>
+      <button class="divide">/</button>
+      <button class="digit">4</button>
+      <button class="digit">5</button>
+      <button class="digit">6</button>
+      <button class="multiply">*</button>
+      <button class="digit">1</button>
+      <button class="digit">2</button>
+      <button class="digit">3</button>
+      <button class="subtract">-</button>
+      <button class="decimal">.</button>
+      <button class="digit">0</button>
+      <button class="equal">=</button>
+      <button class="add">+</button>
     </div>
   </body>
 </html>
