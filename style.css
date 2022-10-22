@@ -19,6 +19,9 @@ body {
   border: 2px solid black;
   padding: 10px;
   background-color: #ffd60a;
+}
+
+.calculator-keys {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 5px;
@@ -31,10 +34,9 @@ body {
   color: white;
   padding: 15px;
   font-size: 24px;
-}
-
-.span-4 {
-  grid-column: 1 / -1;
+  overflow-x: scroll;
+  margin-bottom: 15px;
+  border-radius: 5px;
 }
 
 .span-2 {
