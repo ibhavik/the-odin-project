@@ -1,35 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <script defer src="app.js"></script>
-    <title>Calculator</title>
+    <link href="output.css" rel="stylesheet" />
   </head>
-  <body>
-    <div class="calculator">
-      <div class="display">0</div>
-      <div class="calculator-keys">
-        <button class="clear span-2" data-action="clear">CLEAR</button>
-        <button class="span-2" data-action="delete">DELETE</button>
-        <button class="digit">7</button>
-        <button class="digit">8</button>
-        <button class="digit">9</button>
-        <button class="divide" data-action="divide">/</button>
-        <button class="digit">4</button>
-        <button class="digit">5</button>
-        <button class="digit">6</button>
-        <button class="multiply" data-action="multiply">&times;</button>
-        <button class="digit">1</button>
-        <button class="digit">2</button>
-        <button class="digit">3</button>
-        <button class="subtract" data-action="subtract">-</button>
-        <button class="decimal" data-action="decimal">.</button>
-        <button class="digit">0</button>
-        <button class="equal" data-action="equals">=</button>
-        <button class="add" data-action="add">+</button>
+  <body class="flex">
+    <div class="basis-2/5 bg-zinc-500 h-screen">
+      <img
+        src="https://images.unsplash.com/photo-1551921038-a9009c20adb3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2835&q=80"
+        alt="Up in the air"
+        class="h-full object-cover"
+      />
+    </div>
+    <div class="grow bg-slate-100">
+      <div class="px-20 pt-24 py-6">
+        <h2 class="font-bold text-lg mb-5">
+          This is not a real online service! You know you need something like
+          this in your life to help you realize your deepest dreams.
+        </h2>
+        <p class="font-bold text-lg mb-3">Sign up now to get started!</p>
+        <p class="font-bold text-lg mb-5">You know you want this</p>
+      </div>
+      <form
+        action="http://httpbin.org/post"
+        method="post"
+        class="bg-white px-20 py-6"
+      >
+        <ul class="grid grid-cols-2 gap-2">
+          <li class="list-none">
+            <label for="first-name" class="block">First Name</label>
+            <input
+              type="text"
+              name="first-name"
+              id="first-name"
+              class="block p-1 w-1/2 text-gray-900 bg-gray-50 rounded-sm border border-black text-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+          </li>
+          <li class="list-none">
+            <label for="last-name" class="block">Last Name</label>
+            <input
+              type="text"
+              name="last-name"
+              id="last-name"
+              class="block p-1 w-1/2 text-gray-900 bg-gray-50 rounded-sm border border-black text-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+          </li>
+          <li class="list-none">
+            <label for="email" class="block">Email</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              class="block p-1 w-1/2 text-gray-900 bg-gray-50 rounded-sm border border-black text-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 invalid:border-red-500 invalid:border-2"
+            />
+          </li>
+          <li class="list-none">
+            <label for="phone" class="block">Phone Number</label>
+            <input
+              type="text"
+              name="phone"
+              id="phone"
+              pattern="^[9876]\d{9}"
+              class="block p-1 w-1/2 text-gray-900 bg-gray-50 rounded-sm border border-black text-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 invalid:border-red-500 invalid:border-2"
+            />
+          </li>
+          <li class="list-none">
+            <label for="password" class="block">Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              class="block p-1 w-1/2 text-gray-900 bg-gray-50 rounded-sm border border-black text-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+          </li>
+          <li class="list-none">
+            <label for="confirm-password" class="block">Confirm Password</label>
+            <input
+              type="password"
+              name="confirm-password"
+              id="confirm-password"
+              class="block p-1 w-1/2 text-gray-900 bg-gray-50 rounded-sm border border-black text-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+          </li>
+          <li class="list-none">
+            <button
+              type="submit"
+              class="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              Create Account
+            </button>
+          </li>
+        </ul>
+      </form>
+      <div class="px-20 py-6">
+        <p>
+          Already have an account?
+          <a href="#" class="text-blue-900 hover:underline font-semibold"
+            >Login</a
+          >
+        </p>
       </div>
     </div>
   </body>
