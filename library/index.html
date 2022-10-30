@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="app.js"></script>
+    <title>Library</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>My Library</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>S.No</th>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Pages</th>
+            <th>IsRead</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Harry Potter & The Philosopher Stone</td>
+            <td>JK Rowling</td>
+            <td>294</td>
+            <td>Yes</td>
+            <td><i class="fa-solid fa-trash"></i></td>
+          </tr>
+        </tbody>
+        <tr>
+          <td><button class="add-book">Add Book</button></td>
+        </tr>
+      </table>
+    </div>
+    <div class="modal hidden">
+      <div class="close"><i class="fa-solid fa-xmark"></i></div>
+      <div class="modal-content">
+        <form action="">
+          <ul>
+            <li>
+              <label class="label" for="title">Name</label>
+              <input
+                class="book-info"
+                type="text"
+                name="title"
+                id="title"
+                required
+              />
+            </li>
+            <li>
+              <label class="label" for="author">Author</label>
+              <input
+                required
+                class="book-info"
+                type="text"
+                name="author"
+                id="author"
+              />
+            </li>
+            <li>
+              <label class="label" for="numPages">Pages</label>
+              <input
+                class="book-info"
+                type="number"
+                name="numPages"
+                id="numPages"
+                required
+              />
+            </li>
+            <li>
+              <label class="label" for="isRead">Read?</label>
+              <select class="book-info" name="isRead" id="isRead">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </li>
+            <li><button class="book-submit" type="submit">Add</button></li>
+          </ul>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
